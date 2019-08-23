@@ -9,11 +9,11 @@
 <pre>
 <span class="bold">Characters/voile.ini</span>
 <span class="bold"><span class="f4">[start]</span></span>
-!setattr --name Voile --momentum|0 --temp_dmg|0 --temp_pdmg|0 --temp_esq|0 --temp_def|0 --temp_pdef|0 --regen|0 --dot|0 --frostdamage|0 --frostshield|0 --momentum_dmg|0 --momentum_esq|0 --pctreceived_b|0 --pctreceived_s|0 --tempo_dmg|0 --tempo_par|0 --tempo_esq|0 --momentum_par|0 --actions|[[@{Voile|base-Agilite}+@{Voile|exal-Agilite}+@{Voile|general_skilllevel_supernatural_reflexes}*2+floor(@{Voile|harmony}*@{God|b_wind_har_act})]]|[[@{Voile|base-Agilite}+@{Voile|exal-Agilite}+@{Voile|general_skilllevel_supernatural_reflexes}*2+floor(@{Voile|harmony}*@{God|b_wind_har_act})]] --bloodbath_charges|[[@{Voile|repeating_magic-vital-skills_-Lk0KWNdsKB9AeKJwoRI_magic_vital_skilllevel}]]
+!setattr --name Voile --momentum|0 --temp_dmg|0 --temp_pdmg|0 --temp_esq|0 --temp_def|0 --temp_pdef|0 --regen|0 --dot|0 --frostdamage|0 --frostshield|0 --momentum_dmg|0 --momentum_esq|0 --pctreceived_b|0 --pctreceived_s|0 --tempo_dmg|0 --tempo_par|0 --tempo_esq|0 --momentum_par|0 --actions|[[@{Voile|base-Agilite}+@{Voile|exal-Agilite}+@{Voile|general_skilllevel_supernatural_reflexes}*2+floor(@{Voile|harmony}*@{God|b_wind_har_act})]]|[[@{Voile|base-Agilite}+@{Voile|exal-Agilite}+@{Voile|general_skilllevel_supernatural_reflexes}*2+floor(@{Voile|harmony}*@{God|b_wind_har_act})]] --bloodbath_charges|[[@{Voile|repeating_magic-vital-skills_-Lk0KWNdsKB9AeKJwoRI_magic_vital_skilllevel}]] --pcthealing|100 --shieldregen|0 --grieviouswounds|1
 /w Voile Début du combat
 /w Voile Toutes les reserves sont réinitialisées.
 <span class="bold"><span class="f4">[turn]</span></span>
-!setattr --name Voile --Life_Points|[[{@{Voile|Life_Points}+@{Voile|regen}-1*(@{Voile|dot}),@{Voile|Life_Points|max}}kl1]] --actions|[[@{Voile|base-Agilite}+@{Voile|exal-Agilite}+@{Voile|general_skilllevel_supernatural_reflexes}*2+floor(@{Voile|harmony}*@{God|b_wind_har_act})]]|[[@{Voile|base-Agilite}+@{Voile|exal-Agilite}+@{Voile|general_skilllevel_supernatural_reflexes}*2+floor(@{Voile|harmony}*@{God|b_wind_har_act})]]
+!setattr --name Voile --Life_Points|[[{@{Voile|Life_Points}+floor(@{Voile|regen}*@{Voile|pcthealing}/100)-1*(@{Voile|dot}),@{Voile|Life_Points|max}}kl1]] --actions|[[@{Voile|base-Agilite}+@{Voile|exal-Agilite}+@{Voile|general_skilllevel_supernatural_reflexes}*2+floor(@{Voile|harmony}*@{God|b_wind_har_act})]]|[[@{Voile|base-Agilite}+@{Voile|exal-Agilite}+@{Voile|general_skilllevel_supernatural_reflexes}*2+floor(@{Voile|harmony}*@{God|b_wind_har_act})]]
 /w Voile Il vous reste @{Voile|bloodbath_charges} utilisations de *Bain de sang*
 <span class="bold"><span class="f4">[multiple_seals]</span></span>
 !setattr --name Voile --multiple_seals|[[?{Nombre de sceaux}]]

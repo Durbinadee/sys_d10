@@ -9,10 +9,10 @@
 <pre>
 <span class="bold">Characters/npc.ini</span>
 <span class="bold"><span class="f4">[start]</span></span>
-!setattr --sel --momentum|0 --temp_dmg|0 --temp_pdmg|0 --temp_esq|0 --temp_def|0 --temp_pdef|0 --regen|0 --dot|0 --frostdamage|0 --frostshield|0 --mana|@{selected|mana|max} --pctreceived_b|0 --pctreceived_s|0 --elem_omega|0 --pcthealing|100 --shieldregen|0
+!setattr --sel --momentum|0 --temp_dmg|0 --temp_pdmg|0 --temp_esq|0 --temp_def|0 --temp_pdef|0 --regen|0 --dot|0 --frostdamage|0 --frostshield|0 --mana|@{selected|mana|max} --pctreceived_b|0 --pctreceived_s|0 --elem_omega|0 --pcthealing|100 --shieldregen|0 --grieviouswounds|1
 /w gm Initialisation de @{selected|character_name}
 <span class="bold"><span class="f4">[turn]</span></span>
-!setattr --sel --Life_Points|[[{@{selected|Life_Points}+floor(@{selected|regen}*@{selected|pcthealing}/100)-1*(@{selected|dot}),@{selected|Life_Points|max}}kl1]] --shield|[[{@{seelected|shield}+@{selected|shieldregen},@{selected|shield|max}}]]
+!setattr --sel --Life_Points|[[{@{selected|Life_Points}+floor(@{selected|regen}*@{selected|pcthealing}/100)-1*(@{selected|dot}),@{selected|Life_Points|max}}kl1]] --shield|[[{@{selected|shield}+@{selected|shieldregen},@{selected|shield|max}}]]
 /w gm Tour de @{selected|character_name}
 <span class="bold"><span class="f4">[attaque_macro]</span></span>
 !crit ?{Nombre de des d'attaque} P @{selected|general_effective_Perfection} c @{selected|crit_level} M @{selected|skillcost_Technique_martiale} @{selected|general_effective_Technique_martiale} E @{selected|skillcost_Exploiter_les_points_faibles} @{selected|general_effective_Exploiter_les_points_faibles} F @{selected|general_effective_Fauchage} D @{selected|general_effective_Coup_dechirant} H @{selected|base_damage_dices} H @{selected|exal_damage_dices} A @{selected|Skill_general_attribute_select_attaque} s @{selected|general_attack_threshold} l @{selected|general_attack_addall} a a n @{selected|undescored_name} + @{selected|additional_damage_dices} + @{selected|general_effective_weapon1} + @{selected|general_effective_weapon2} t @{selected|transcendence} + @{selected|general_effective_weapon3} f @{selected|pctinflicted} f @{selected|pctinflicted_s} f @{selected|pctinflicted_b} + @{selected|temp_dmg} f @{selected|temp_pdmg}
@@ -33,9 +33,9 @@
 <span class="bold"><span class="f4">[direction_aoe]</span></span>
 !areasOfEffectApplyEffectAtCone @{selected|token_id} ?{Specify radius:}
 <span class="bold"><span class="f4">[add-regen]</span></span>
-!setattr --charid @{target|T1|character_id} --mod --regen|[[?{Dégats}]]
+!setattr --charid @{target|T1|character_id} --mod --regen|[[?{Dégats }]]
 <span class="bold"><span class="f4">[add-dot]</span></span>
-!setattr --charid @{target|T1|character_id} --mod --dot|[[?{Dégats}]]
+!setattr --charid @{target|T1|character_id} --mod --dot|[[?{Dégats }]]
 <span class="bold"><span class="f4">[def_pct.t]</span></span>
 !setattr --mod --name @{target|T1|character_name} --temp_pdef|?{&amp;#37; Dégats reduits}
 <span class="bold"><span class="f4">[def_pct]</span></span>
