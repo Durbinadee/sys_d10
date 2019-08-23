@@ -15,5 +15,7 @@
 "altmag":{"name":"Altération Magique","description":"<p>Vos caractéristiques magiques sont altérées.</p>","icon":"blue"},
 "aura":{"name":"Auréole","description":"<p>Si vous deviez subir des dégâts létaux, devenez inciblable pendant une action à la place.</p><p>Si vous êtes sous l'effet d'une ou plusieurs altérations d'état négatives, retirez-les.</p>","icon":"angel-outfit"},
 "tenacity":{"name":"Tenacité","description":"<p>Vos défenses sont grandement augmentées.</p>","icon":"white-tower"},
-"benediction":{"name":"Bénédiction de l'Hiver","description":"<p>Votre force est grandement augmentée par la force du gel.</p>","icon":"strong"}
+"benediction":{"name":"Bénédiction de l'Hiver","description":"<p>Votre force est grandement augmentée par la force du gel.</p>","icon":"strong"},
+"defiance":{"name":"Défi","description":"<p>Dans la traque de votre vraie Némésis, votre corps et votre etre sont infusés d'une immense puissance.</p>","icon":"all-for-one"},
+"tired":{"name":"Fatigue aggravée","description":"<p>Votre régénération de fatigue est grandement diminuée et vous ne recuperez pas du stress normalement.</p>","icon":"sleepy"}
 }}
