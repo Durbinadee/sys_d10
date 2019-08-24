@@ -29,7 +29,7 @@ Foudre, [Elemental Arcana : Foudre] Reginald inflige [[[[floor((@{Reginald|elem_
 !setattr --name Reginald --temp_pdef|0 --temp_def|0
 <span class="bold"><span class="f4">[parade_macro]</span></span>
 !crit ?{Nombre de des de defense} I @{Reginald|skillcost_Defense_impenetrable} @{Reginald|general_effective_Defense_impenetrable} R @{Reginald|general_effective_Rempart_parfait} c @{Reginald|crit_level} S @{Reginald|general_skilllevel_Encaissement} @{Reginald|general_effective_Encaissement} H @{Reginald|base_defense_dices} H @{Reginald|exal_defense_dices} s @{Reginald|general_defense_threshold} l @{Reginald|general_defense_addall} A @{Reginald|Skill_general_attribute_select_defense} t @{Reginald|transcendence} - ?{Dégats a parer|0} a d n @{Reginald|undescored_name} + @{Reginald|general_effective_shield1} + @{Reginald|general_effective_shield2} + @{Reginald|general_effective_shield3} v @{Reginald|pctreceived} v @{Reginald|pctreceived_s} v @{Reginald|pctreceived_b} v @{Reginald|temp_pdef} v @{Reginald|cylpeos_res} + @{Reginald|temp_def} + ?{Type d'attaque|Physique,@{Reginald|general_skilllevel_res_physique_effective}|Magique,@{Reginald|general_skilllevel_res_magique_effective}|Voile,@{Reginald|general_skilllevel_res_voile_effective}|Divine,@{Reginald|general_skilllevel_res_divine_effective}|Existence,0} + @{Reginald|general_skilllevel_res_omega_effective}
-!setattr --name @{Reginald|character_name} --temp_pdef|0 --temp_def|0
+!setattr --charid @{Reginald|charid} --temp_pdef|0 --temp_def|0
 <span class="bold"><span class="f4">[turn]</span></span>
 !setattr --name Reginald --Life_Points|[[{@{Reginald|Life_Points}+floor(@{Reginald|regen}*@{Reginald|pcthealing}/100)-1*(@{Reginald|dot}),@{Reginald|Life_Points|max}}kl1]]
 <span class="bold"><span class="f4">[zone]</span></span>
@@ -116,7 +116,7 @@ Augmentez vos defences de [[floor(((@{Reginald|elem_bois_tot}+@{Reginald|elem_om
 /w Reginald **[Arcane avancée : Scientia]** Nommez une carte, allez la chercher dans votre deck.
 <span class="bold"><span class="f4">[despectio]</span></span>
 !setattr --name Reginald --fluctus|[[@{Reginald|fluctus}-@{God|b_despectio_cost}]] --temp_pdef|[[-1*{@{Reginald|repeating_magic-arcanist-skills_-LkQX-7OEF6WHkQtzrfQ_magic_arcanist_skilllevel}*?{Nombre de cartes en main}*@{God|b_despectio},99}kl1]]
-/w Reginald [Cout: @{God|b_despectio_cost}] Reaction - Augmentez vos resistances pour la prochaine action de [[@{Reginald|repeating_magic-arcanist-skills_-LkQX-7OEF6WHkQtzrfQ_magic_arcanist_skilllevel}*@{God|b_despectio}]]&amp;#37; par carte en main.
+[Cout: @{God|b_despectio_cost}] Reaction - Augmentez vos resistances pour la prochaine action de [[@{Reginald|repeating_magic-arcanist-skills_-LkQX-7OEF6WHkQtzrfQ_magic_arcanist_skilllevel}*@{God|b_despectio}]]&amp;#37; par carte en main.
 <span class="bold"><span class="f4">[celeritas]</span></span>
 !setattr --name Reginald --mod --fluctus|?{Niveau de l'arcane | Base, [[-1*@{God|b_celeritas}]] | Avancée, [[-2*@{God|b_celeritas}]] | Ultime, [[-4*@{God|b_celeritas}]]} --celeritas_rem|-1
 /w Reginald Il vous reste jusqu'à [[@{Reginald|celeritas_rem}]] utilisations ce tour-ci.

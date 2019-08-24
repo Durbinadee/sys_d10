@@ -147,7 +147,7 @@
   // undescored_name
   on("change:character_name change:character_race", function() {
     getAttrs(["character_name"], function(values) {
-      setAttrs({"undescored_name":values.character_name.replace(/ /g,"_").replace(/'/g,"/")});
+      setAttrs({"undescored_name":values.character_name.replace(/ /g,"_").replace(/'/g,"/").replace(/./g,"")});
     });
   });
   // dice_with_tanscendance
@@ -592,7 +592,7 @@
     <div class="sheet-tab-content sheet-secondary_tab1">
       <button type='roll' class="sheet-Initiative_roll" value="&{template:d10init}{{name=@{character_name}}} {{roll_name=Initiative}} {{result=[[(@{transcendence}-2)*(@{base-Agilite} + @{exal-Agilite} + @{Initiative} + 1d20) &{tracker}]]}} {{value=[[(@{transcendence}-2)*(@{base-Agilite} + @{exal-Agilite} + @{Initiative})]]}} {{base=[[@{transcendence}-2)*@{Initiative}]]}}">Initiative</button>
       <input type="number" class="sheet-numberbox" name="attr_Initiative" value="0"/>
-      <button type='roll' class="sheet-Attack_roll" value="!crit ?{Nombre de des d'attaque} P @{general_effective_Perfection} c @{crit_level} M @{skillcost_Technique_martiale} @{general_effective_Technique_martiale} E @{skillcost_Exploiter_les_points_faibles} @{general_effective_Exploiter_les_points_faibles} F @{general_effective_Fauchage} D @{general_effective_Coup_dechirant} H @{base_damage_dices} H @{exal_damage_dices} A @{Skill_general_attribute_select_attaque} s @{general_attack_threshold} l @{general_attack_addall} a a n @{undescored_name} + @{additional_damage_dices} + @{general_effective_weapon1} + @{general_effective_weapon2} t @{transcendence} + @{general_effective_weapon3} f @{pctinflicted} f @{pctinflicted_s} f @{pctinflicted_b} ">Attaque</button>
+      <button type='roll' class="sheet-Attack_roll" value="!crit ?{Nombre de des d'attaque|0} P @{general_effective_Perfection} c @{crit_level} M @{skillcost_Technique_martiale} @{general_effective_Technique_martiale} E @{skillcost_Exploiter_les_points_faibles} @{general_effective_Exploiter_les_points_faibles} F @{general_effective_Fauchage} D @{general_effective_Coup_dechirant} H @{base_damage_dices} H @{exal_damage_dices} A @{Skill_general_attribute_select_attaque} s @{general_attack_threshold} l @{general_attack_addall} a a n @{undescored_name} + @{additional_damage_dices} + @{general_effective_weapon1} + @{general_effective_weapon2} t @{transcendence} + @{general_effective_weapon3} f @{pctinflicted} f @{pctinflicted_s} f @{pctinflicted_b} ">Attaque</button>
       <!-- <input type="number" class="sheet-numberbox" name="attr_nb_attack_dices" title="Nombre de des d'attaque" value="0"/>d10+ -->
       <input type="number" class="sheet-numberbox" type="number" name="attr_base_damage_dices" title="Base de dégats (crit)" value="0"/>+
       <input type="number" class="sheet-numberbox" type="number" name="attr_exal_damage_dices" title="Modificateur temporaire (crit)" value="0"/>+
@@ -794,7 +794,7 @@
 
     <!--Defense -->
     <div class="sheet-tab-content sheet-secondary_tab3">
-      <button type='roll' class="sheet-Attack_roll" value="!crit ?{Nombre de des de defense} I @{skillcost_Defense_impenetrable} @{general_effective_Defense_impenetrable} R @{general_effective_Rempart_parfait} c @{crit_level} S @{general_skilllevel_Encaissement} @{general_effective_Encaissement} H @{base_defense_dices} H @{exal_defense_dices} s @{general_defense_threshold} l @{general_defense_addall} A @{Skill_general_attribute_select_defense} t @{transcendence} - ?{Dégats a parer|0} a d n @{undescored_name} + @{general_effective_shield1} + @{general_effective_shield2} + @{general_effective_shield3} v @{pctreceived} v @{pctreceived_s} v @{pctreceived_b} ">Parade</button>
+      <button type='roll' class="sheet-Attack_roll" value="!crit ?{Nombre de des de defense|0} I @{skillcost_Defense_impenetrable} @{general_effective_Defense_impenetrable} R @{general_effective_Rempart_parfait} c @{crit_level} S @{general_skilllevel_Encaissement} @{general_effective_Encaissement} H @{base_defense_dices} H @{exal_defense_dices} s @{general_defense_threshold} l @{general_defense_addall} A @{Skill_general_attribute_select_defense} t @{transcendence} - ?{Dégats a parer|0} a d n @{undescored_name} + @{general_effective_shield1} + @{general_effective_shield2} + @{general_effective_shield3} v @{pctreceived} v @{pctreceived_s} v @{pctreceived_b} ">Parade</button>
       <!--<input type="number" class="sheet-numberbox" name="attr_nb_defense_dices" title="Nombre de des de defense" value="0"/>d10+-->
       <input type="number" class="sheet-numberbox" name="attr_base_defense_dices" title="Base de defense (crit)" value="0"/>+
       <input type="number" class="sheet-numberbox" name="attr_exal_defense_dices" title="Modificateur temporaire (crit)" value="0"/>
@@ -808,7 +808,7 @@
       ><input type="number" class="sheet-numberbox" name="attr_general_defense_threshold" title="Seuil pour toucher l'attaque" value="0"/>
       &forall;<input type="number" class="sheet-numberbox" name="attr_general_defense_addall" title="Modificateur sur chaque des" value="0"/>
       <br/>
-      <button type='roll' class="sheet-Attack_roll" value="!crit ?{Nombre de des d'esquive} I @{skillcost_Defense_impenetrable} @{general_effective_Defense_impenetrable} R @{general_effective_Rempart_parfait} c @{crit_level} H @{base_dodge_dices} A @{Skill_general_attribute_select_dodge} t @{transcendence} s ?{Seuil d'esquive} - ?{Dégats a esquiver|0} a e n @{undescored_name} v @{pctreceived} v @{pctreceived_s} v @{pctreceived_b}">Esquive</button>
+      <button type='roll' class="sheet-Attack_roll" value="!crit ?{Nombre de des d'esquive|0} I @{skillcost_Defense_impenetrable} @{general_effective_Defense_impenetrable} R @{general_effective_Rempart_parfait} c @{crit_level} H @{base_dodge_dices} A @{Skill_general_attribute_select_dodge} t @{transcendence} s ?{Seuil d'esquive|5} - ?{Dégats a esquiver|0} a e n @{undescored_name} v @{pctreceived} v @{pctreceived_s} v @{pctreceived_b}">Esquive</button>
       <!--<input type="number" class="sheet-numberbox" name="attr_nb_dodge_dices" title="Nombre de des d'esquive" value="0"/>d10+-->
       <input type="number" class="sheet-numberbox" name="attr_base_dodge_dices" title="Modificateur d'esquive" value="0"/>
       <select class="sheet-skill_select" style="margin-right:4px" name="attr_Skill_general_attribute_select_dodge">
@@ -1045,7 +1045,7 @@
 
     <!--TIR & CHARGE -->
     <div class="sheet-tab-content sheet-secondary_tab4">.
-      <button type='roll' class="sheet-Attack_roll" value="!crit ?{Nombre de des de tir} T @{skillcost_Tir_precis} @{general_effective_Tir_precis} i @{general_effective_Tir_implacable} M @{skillcost_Technique_martiale} @{general_effective_Technique_martiale} E @{skillcost_Exploiter_les_points_faibles} @{general_effective_Exploiter_les_points_faibles} L @{base_shoot_dices} c @{crit_level} l @{add_shoot_dices} t @{transcendence} s ?{Seuil de tir|6} a a n @{undescored_name} f @{pctinflicted} f @{pctinflicted_s} f @{pctinflicted_b}">Tir</button>
+      <button type='roll' class="sheet-Attack_roll" value="!crit ?{Nombre de des de tir|0} T @{skillcost_Tir_precis} @{general_effective_Tir_precis} i @{general_effective_Tir_implacable} M @{skillcost_Technique_martiale} @{general_effective_Technique_martiale} E @{skillcost_Exploiter_les_points_faibles} @{general_effective_Exploiter_les_points_faibles} L @{base_shoot_dices} c @{crit_level} l @{add_shoot_dices} t @{transcendence} s ?{Seuil de tir|6} a a n @{undescored_name} f @{pctinflicted} f @{pctinflicted_s} f @{pctinflicted_b}">Tir</button>
       <!--<input type="number" class="sheet-numberbox" name="attr_nb_shoot_dices" tile="Nombre de des de tir" value="0"/>d10 -->&#8728;
       <input type="number" class="sheet-numberbox" name="attr_base_shoot_dices" title="Valeur de dégat des des" value="0"/>&forall;
       <input type="number" class="sheet-numberbox" name="attr_add_shoot_dices" title="Modificateur" value="0"/>
@@ -1187,7 +1187,9 @@
 <rolltemplate class="sheet-rolltemplate-d10skillcheck">
   <table class="">
     <tr><th class="roll-title">{{name}} &mdash; {{roll_name}}</th></tr>
+    {{#dice_name}}
     <tr><td class="roll-attr"> Test au d{{dice_name}} seuil {{threshold}} </td></tr>
+    {{/dice_name}}
     <tr>
       {{#rollWasCrit() result}}
         <td class="roll-crit">Critique ! {{result}}<span class="inline fullcrit">x2</span> degrés de réussite</td>

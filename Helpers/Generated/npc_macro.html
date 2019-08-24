@@ -16,16 +16,16 @@
 /w gm Tour de @{selected|character_name}
 <span class="bold"><span class="f4">[attaque_macro]</span></span>
 !crit ?{Nombre de des d'attaque} P @{selected|general_effective_Perfection} c @{selected|crit_level} M @{selected|skillcost_Technique_martiale} @{selected|general_effective_Technique_martiale} E @{selected|skillcost_Exploiter_les_points_faibles} @{selected|general_effective_Exploiter_les_points_faibles} F @{selected|general_effective_Fauchage} D @{selected|general_effective_Coup_dechirant} H @{selected|base_damage_dices} H @{selected|exal_damage_dices} A @{selected|Skill_general_attribute_select_attaque} s @{selected|general_attack_threshold} l @{selected|general_attack_addall} a a n @{selected|undescored_name} + @{selected|additional_damage_dices} + @{selected|general_effective_weapon1} + @{selected|general_effective_weapon2} t @{selected|transcendence} + @{selected|general_effective_weapon3} f @{selected|pctinflicted} f @{selected|pctinflicted_s} f @{selected|pctinflicted_b} + @{selected|temp_dmg} f @{selected|temp_pdmg}
-!setattr --name @{selected|character_name} --temp_pdmg|0 --temp_dmg|0
+!setattr --charid @{selected|character_id} --temp_pdmg|0 --temp_dmg|0
 <span class="bold"><span class="f4">[esquive_macro]</span></span>
 !crit ?{Nombre de des d'esquive} I @{selected|skillcost_Defense_impenetrable} @{selected|general_effective_Defense_impenetrable} R @{selected|general_effective_Rempart_parfait} c @{selected|crit_level} H @{selected|base_dodge_dices} A @{selected|Skill_general_attribute_select_dodge} t @{selected|transcendence} s ?{selected|Seuil d'esquive} - ?{Dégats a esquiver|0} a e n @{selected|undescored_name} v @{selected|pctreceived} v @{selected|pctreceived_s} v @{selected|pctreceived_b} + @{selected|temp_esq}
-!setattr --name @{selected|character_name} --temp_esq|0
+!setattr --charid @{selected|character_id} --temp_esq|0
 <span class="bold"><span class="f4">[parade_macro]</span></span>
 !crit ?{Nombre de des de defense} I @{selected|skillcost_Defense_impenetrable} @{selected|general_effective_Defense_impenetrable} R @{selected|general_effective_Rempart_parfait} c @{selected|crit_level} S @{selected|general_skilllevel_Encaissement} @{selected|general_effective_Encaissement} H @{selected|base_defense_dices} H @{selected|exal_defense_dices} s @{selected|general_defense_threshold} l @{selected|general_defense_addall} A @{selected|Skill_general_attribute_select_defense} t @{selected|transcendence} - ?{Dégats a parer|0} a d n @{selected|undescored_name} + @{selected|general_effective_shield1} + @{selected|general_effective_shield2} + @{selected|general_effective_shield3} v @{selected|pctreceived} v @{selected|pctreceived_s} v @{selected|pctreceived_b} v @{selected|temp_pdef} + @{selected|temp_def} + ?{Type d'attaque|Physique,@{selected|general_skilllevel_res_physique_effective}|Magique,@{selected|general_skilllevel_res_magique_effective}|Voile,@{selected|general_skilllevel_res_voile_effective}|Divine,@{selected|general_skilllevel_res_divine_effective}|Existence,0} + @{selected|general_skilllevel_res_omega_effective}
-!setattr --name @{selected|character_name} --temp_pdef|0 --temp_def|0
+!setattr --charid @{selected|character_id} --temp_pdef|0 --temp_def|0
 <span class="bold"><span class="f4">[parade_brute_macro]</span></span>
 !crit ?{Nombre de des de defense} I @{selected|skillcost_Defense_impenetrable} @{selected|general_effective_Defense_impenetrable} R @{selected|general_effective_Rempart_parfait} c @{selected|crit_level} S @{selected|general_skilllevel_Encaissement} @{selected|general_effective_Encaissement} H @{selected|base_defense_dices} H @{selected|exal_defense_dices} s @{selected|general_defense_threshold} l @{selected|general_defense_addall} A @{selected|Skill_general_attribute_select_defense} t @{selected|transcendence} - ?{Dégats a parer|0} a d n @{selected|undescored_name} + @{selected|general_item_shield3} v @{selected|pctreceived} v @{selected|pctreceived_s} v @{selected|pctreceived_b} v @{selected|temp_pdef} + @{selected|temp_def} + ?{Type d'attaque|Physique,@{selected|general_skilllevel_res_physique_effective}|Magique,@{selected|general_skilllevel_res_magique_effective}|Voile,@{selected|general_skilllevel_res_voile_effective}|Divine,@{selected|general_skilllevel_res_divine_effective}|Existence,0} + @{selected|general_skilllevel_res_omega_effective}
-!setattr --name @{selected|character_name} --temp_pdef|0 --temp_def|0
+!setattr --charid @{selected|character_id} --temp_pdef|0 --temp_def|0
 <span class="bold"><span class="f4">[tir_macro]</span></span>
 !crit ?{Nombre de des de tir} T @{selected|skillcost_Tir_precis} @{selected|general_effective_Tir_precis} i @{selected|general_effective_Tir_implacable} M @{selected|skillcost_Technique_martiale} @{selected|general_effective_Technique_martiale} E @{selected|skillcost_Exploiter_les_points_faibles} @{selected|general_effective_Exploiter_les_points_faibles} L @{selected|base_shoot_dices} c @{selected|crit_level} l @{selected|add_shoot_dices} t @{selected|transcendence} s ?{Seuil de tir|6} a a n @{selected|undescored_name} f @{selected|pctinflicted} f @{selected|pctinflicted_s} f @{selected|pctinflicted_b}
 <span class="bold"><span class="f4">[place_aoe]</span></span>
@@ -37,15 +37,23 @@
 <span class="bold"><span class="f4">[add-dot]</span></span>
 !setattr --charid @{target|T1|character_id} --mod --dot|[[?{Dégats }]]
 <span class="bold"><span class="f4">[def_pct.t]</span></span>
-!setattr --mod --name @{target|T1|character_name} --temp_pdef|?{&amp;#37; Dégats reduits}
+!setattr --mod --charid @{target|T1|character_id} --temp_pdef|?{&amp;#37; Dégats reduits}
 <span class="bold"><span class="f4">[def_pct]</span></span>
-!setattr --mod --name @{target|T1|character_name} --pctreceived|?{&amp;#37; Dégats reduits}
+!setattr --mod --charid @{target|T1|character_id} --pctreceived|?{&amp;#37; Dégats reduits}
 <span class="bold"><span class="f4">[dmg_pct.t]</span></span>
-!setattr --mod --name @{target|T1|character_name} --temp_pdmg|?{&amp;#37; Dégats supplementaire}
+!setattr --mod --charid @{target|T1|character_id} --temp_pdmg|?{&amp;#37; Dégats supplementaire}
 <span class="bold"><span class="f4">[dmg_pct]</span></span>
-!setattr --mod --name @{target|T1|character_name} --pctinflicted|?{&amp;#37; Dégats supplementaire}
+!setattr --mod --charid @{target|T1|character_id} --pctinflicted|?{&amp;#37; Dégats supplementaire}
 <span class="bold"><span class="f4">[cond_list]</span></span>
 !ct show
+<span class="bold"><span class="f4">[seuil]</span></span>
+!setattr --sel --
+<span class="bold"><span class="f4">[def.threshold]</span></span>
+!setattr --charid @{target|T1|character_id} --general_defense_threshold|?{Seuil de defence}
+<span class="bold"><span class="f4">[dmg.threshold]</span></span>
+!setattr --charid @{target|T1|character_id} --general_attack_threshold|?{Seuil de defence}
+<span class="bold"><span class="f4">[resist]</span></span>
+&amp;{template:d10skillcheck}{{name=@{selected|character_name}}} {{roll_name=Jet de résistance}} {{result=[[?{Type|Magique, @{selected|general_skilllevel_res_magique}|Physique, @{selected|general_skilllevel_res_physique}|Voile, @{selected|general_skilllevel_res_voile}|Divine, @{selected|general_skilllevel_res_divine}|Existence, @{selected|general_skilllevel_res_omega}}+(?{Caractèristique|Volonté, @{selected|base-Volonte}+@{selected|exal-Volonte}|Force, @{selected|base-Force}+@{selected|exal-Force}|Spéciale, @{selected|base-custom}+@{selected|exal-custom}})-d?{Des|10}cs1]]}}
 </pre>
 </body>
 </html>

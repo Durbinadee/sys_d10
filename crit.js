@@ -93,7 +93,12 @@ on("chat:message", function(msg) {
             //Merge the rerolls to the results, then drop the d_vars.rerolls lower ones (this method is equivalent to n consecutives rerolls)
             for(i=0;i<d_vars.relances ; i++){
                 // Find the smallest element and Place the reroll in it's place
-                d_vars.results[indexOfSmallest(d_vars.results)]=rerolls[i];
+                var s=indexOfSmallest(d_vars.results);
+                if (7<d_vars.results[s] && d_vars.relances!=1){
+                    d_vars.relances=i;
+                    break;
+                }
+                d_vars.results[s]=rerolls[i];
             };
 
             // Now we can split the cleave from the rolls
@@ -305,7 +310,9 @@ function add_thoose_dices(d_vars,results,name,m_esq,m_crit){
     if (d_vars.nb_2add!=0){dices+=")";};
     if (d_vars.nb_2sub!=0){dices+=" - "+d_vars.nb_2sub;};
     // Add everything to the sum
-    sum=Math.floor(((sum*m_esq+d_vars.on_hit_c+d_vars.attribute))*m_crit)+d_vars.nb_2add
+    if (sum!=0){
+        sum+=Math.floor(((sum*m_esq+d_vars.on_hit_c+d_vars.attribute))*m_crit)+d_vars.nb_2add;
+    }
     sum+=d_vars.defense_i_0+d_vars.exploiter_p_0+d_vars.charge+d_vars.technique_result+d_vars.encaissement_result;
     if(d_vars.transcendence>3){sum=sum*(2**(d_vars.transcendence-3));}
     else {
